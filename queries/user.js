@@ -12,13 +12,13 @@ export async function getUserById(userId) {
 
 export async function getUserByName(userName) {
   return ( 
-    await db.query('SELECT * FROM users WHERE name = $1', [userName])[0]
+    await db.query('SELECT * FROM users WHERE name = $1 LIMIT 1', [userName])
   );
 }
 
 export async function createUser(user) {
   return (db.query(
-    'INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',
+    'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *',
     [user.name, user.email, user.password])
   );
 }
