@@ -30,7 +30,9 @@
     "istanbul": "^0.4.5",
     "mocha": "^6.1.4",
     "nodemon": "^1.18.3",
-    "nyc": "^14.1.1"
+    "nyc": "^14.1.1",
+    "sequelize": "^6.3.4",
+    "sequelize-cli": "^6.2.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
@@ -46,8 +48,6 @@
     "jshint": "^2.10.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "pg": "^8.3.0",
-    "sequelize": "^6.3.4",
-    "sequelize-cli": "^6.2.0"
+    "pg": "^8.3.0"
   }
 }
