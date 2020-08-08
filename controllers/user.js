@@ -1,5 +1,4 @@
 import { signup } from '../services/user';
-const passport = require('../auth/local');
 
 exports.create = (req, res, next) => {
   return signup(req)
