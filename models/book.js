@@ -55,5 +55,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
+  Book.associate = (models) => {
+    Book.belongsTo(models.User, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE'
+    });
+  };
+  
   return Book;
 };
