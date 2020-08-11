@@ -21,7 +21,7 @@ module.exports = {
         type: DataTypes.STRING,
       },
       author: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING,
       },
       score: {
@@ -33,15 +33,15 @@ module.exports = {
         type: DataTypes.STRING,
       },
       link: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING,
       },
       pagesNumber: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.INTEGER
       },
       lastPageRead: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.INTEGER
       },
       createdAt: {
