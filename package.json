@@ -44,6 +44,7 @@
     "express-flash": "^0.0.2",
     "express-promise-router": "^4.0.1",
     "express-session": "^1.17.1",
+    "faker": "^4.1.0",
     "helmet": "^3.18.0",
     "jshint": "^2.10.2",
     "passport": "^0.4.1",

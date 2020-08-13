@@ -43,15 +43,7 @@ module.exports = {
       lastPageRead: {
         allowNull: true,
         type: DataTypes.INTEGER
-      },
-      createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
+      }
     });
   },
 
