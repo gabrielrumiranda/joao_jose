@@ -9,7 +9,7 @@
     "start": "nodemon --exec babel-node app.js",
     "build": "babel config --out-dir dist",
     "test": "nyc mocha tests/**/**/*.test.js --recursive --exit --reporter nyan ",
-    "lint": "./node_modules/.bin/eslint ./",
+    "lint": "eslint \"**/*.js\"",
     "coverage": "nyc report --reporter=lcov",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov"
   },
@@ -53,6 +53,9 @@
     "passport-local": "^1.0.0",
     "pg": "^8.3.0",
     "sequelize-test-helpers": "^1.2.3"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-developit"
   },
   "nyc": {
     "require": [

@@ -1,6 +1,6 @@
 import { signup } from '../services/user';
 
-exports.create = (req, res, next) => {
+exports.create = (req, res) => {
   return signup(req)
     .then((create_user) => {
       const user = create_user.rows[0];

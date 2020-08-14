@@ -5,14 +5,12 @@ const {
   checkPropertyExists
 } = require('sequelize-test-helpers');
 
-const { expect } = require('chai')
+const { expect } = require('chai');
 
 const UserModel = require('../../../models/user');
-const bookModel = require('../../../models/book');
 
 describe('src/models/User', () => {
   const User = UserModel(sequelize, dataTypes);
-  const Book = bookModel(sequelize, dataTypes);
 
   const user = new User();
 
@@ -25,11 +23,11 @@ describe('src/models/User', () => {
   });
   
   context('associations', () => {
-    const Book = 'some dummy book'
+    const Book = 'some dummy book';
 
     before(() => {
-      User.associate({ Book })
-    }) 
+      User.associate({ Book });
+    }); 
     it('defined a hasMany association with User as \'books\'', () => {
       expect(User.hasMany).to.have.been.calledWith(Book, {
         as: 'books',
