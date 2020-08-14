@@ -28,6 +28,7 @@
     "codecov": "^3.5.0",
     "eslint": "^6.1.0",
     "istanbul": "^0.4.5",
+    "jest": "^26.4.0",
     "mocha": "^6.1.4",
     "nodemon": "^1.18.3",
     "nyc": "^14.1.1",
@@ -49,6 +50,7 @@
     "jshint": "^2.10.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "pg": "^8.3.0"
+    "pg": "^8.3.0",
+    "sequelize-test-helpers": "^1.2.3"
   }
 }
