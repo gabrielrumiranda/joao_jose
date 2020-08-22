@@ -34,7 +34,23 @@ describe('src/models/User', () => {
     });
   });
 
-  context('validator', async () => {
-    await bookFactory.create({pagesNumber: 2, lastPageRead:1}).catch((error) => console.log(error));
+  context('validator', () => {
+    context('lastPageRead', () => {
+      context('lastPageInPageNumber', () => {
+        it('When last page read is less then number of page', async () => {
+          expect(async () => {
+            await bookFactory.create({pagesNumber: 100, lastPageRead:10});
+          }).to.not.throw();
+        });
+
+        it('When last page read is bigger then number of page', async () => {
+          try {
+            await bookFactory.create({pagesNumber: 2, lastPageRead:10});
+          } catch (error) {
+            expect(error).to.be.an.instanceOf(Error).with.property('name', 'SequelizeValidationError');
+          }
+        });
+      });
+    });   
   });
 });
