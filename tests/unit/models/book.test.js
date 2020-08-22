@@ -6,8 +6,8 @@ const {
 } = require('sequelize-test-helpers');
 
 const { expect } = require('chai');
-
 const BookModel = require('../../../models/book');
+const bookFactory = require('../../factory/book');
 
 describe('src/models/User', () => {
   const Book = BookModel(sequelize, dataTypes);
@@ -28,8 +28,13 @@ describe('src/models/User', () => {
     before(() => {
       Book.associate({ User });
     }); 
+
     it('defined a belongsTo association with User', () => {
       expect(Book.belongsTo).to.have.been.calledWith(User);
     });
+  });
+
+  context('validator', async () => {
+    await bookFactory.create({pagesNumber: 2, lastPageRead:1}).catch((error) => console.log(error));
   });
 });

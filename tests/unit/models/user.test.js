@@ -30,8 +30,8 @@ describe('src/models/User', () => {
     }); 
     it('defined a hasMany association with User as \'books\'', () => {
       expect(User.hasMany).to.have.been.calledWith(Book, {
-        as: 'books',
-        foreignKey: 'bookId'
+        as: 'books', 
+        foreignKey: 'userId'
       });
     });
   });

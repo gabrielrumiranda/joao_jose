@@ -1,16 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const config = require('../../config/database.js');
+const config = require('../config/database');
+const env = process.env.NODE_ENV || 'development';
 
 const db = {};
-const sequelize = new Sequelize(config);
+const sequelize = new Sequelize(config[env]);
 
 fs
   .readdirSync(__dirname)
   .filter(file => (file.indexOf('.') !== 0) && (file !== path.basename(__filename)) && (file.slice(-3) === '.js'))
   .forEach((file) => {
-    const model = sequelize.import(path.join(__dirname, file));
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
