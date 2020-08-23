@@ -9,9 +9,8 @@ env:
     - CODECOV_TOKEN=ada463b3-52b8-4d7a-a257-749e01836bec
 before_script:
   - yarn install
-  - yarn build
   - psql -c 'create database joao_jose_api_test;' -U postgres
-  - sequelize db:migrate                                
+  - yarn sequelize db:migrate                                
 script:
   - yarn lint
   - yarn report-coverage
