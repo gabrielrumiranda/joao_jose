@@ -2,13 +2,14 @@
 language: node_js
 node_js:
   - 'stable'
-cache:
-  directories:
-    - "node_modules"
+cache: yarn
 env:
-  - CODECOV_TOKEN=ada463b3-52b8-4d7a-a257-749e01836bec
+  global: 
+    - NODE_ENV=test;
+    - CODECOV_TOKEN=ada463b3-52b8-4d7a-a257-749e01836bec
 before_script:
   - yarn install
+  - yarn build
   - psql -c 'create database joao_jose_api_test;' -U postgres
   - sequelize db:migrate                                
 script:
