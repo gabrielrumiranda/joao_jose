@@ -1,5 +1,5 @@
 const faker = require('faker');
-const { User } = require('../../models/user');
+const { User } = require('../../models');
 
 const default_params = {
   name: faker.name.findName(),
@@ -9,6 +9,5 @@ const default_params = {
 
 export async function create (params = {}) {
   const user = await User.create(Object.assign({}, default_params, params));
-
   return user;
 }

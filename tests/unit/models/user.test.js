@@ -2,12 +2,15 @@ const {
   sequelize,
   dataTypes,
   checkModelName,
-  checkPropertyExists
+  checkPropertyExists,
+  checkHookDefined
 } = require('sequelize-test-helpers');
 
 const { expect } = require('chai');
+const bcrypt = require('bcryptjs');
 
 const UserModel = require('../../../models/user');
+const UserFactory = require ('../../factory/user');
 
 describe('src/models/User', () => {
   const User = UserModel(sequelize, dataTypes);
@@ -20,6 +23,21 @@ describe('src/models/User', () => {
     ['name', 'email', 'password'].forEach(
       checkPropertyExists(user)
     );
+  });
+
+  context('hooks', () => {
+    ['beforeCreate'].forEach(
+      checkHookDefined(user)
+    );
+
+    context('When values are valid', () => {
+      it('the password is saved encrypted', async () => {
+        const password = 'password';
+        const dummyUser = await UserFactory.create({password: password});
+        const validPassword = await bcrypt.compare(password, dummyUser.password);
+        expect(validPassword).is.equal(true);
+      });
+    });
   });
   
   context('associations', () => {

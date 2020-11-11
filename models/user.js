@@ -17,12 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     }
-  }, {
-    hooks: {
-      beforeCreate: (user) => {
-        user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(8), null);
-      }
-    }
+  });
+
+  User.addHook('beforeCreate', (user) => {
+    user.password = bcrypt.hashSync(user.password, 10, null);
   });
 
   User.prototype.validPassword = function (password) {
