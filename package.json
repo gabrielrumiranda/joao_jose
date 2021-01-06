@@ -8,7 +8,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node app.js",
     "build": "babel config --out-dir dist",
-    "test": "nyc mocha tests/**/**/*.test.js --recursive --exit --reporter nyan ",
+    "test": "set NODE_ENV=test && nyc mocha tests/**/**/*.test.js --recursive --exit --reporter nyan ",
     "lint": "eslint \"**/*.js\"",
     "coverage": "nyc report --reporter=lcov",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov"
@@ -50,7 +50,7 @@
     "helmet": "^3.18.0",
     "jshint": "^2.10.2",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
+    "passport-jwt": "^4.0.0",
     "pg": "^8.3.0",
     "sequelize-test-helpers": "^1.2.3"
   },

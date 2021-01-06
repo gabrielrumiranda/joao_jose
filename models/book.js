@@ -1,3 +1,4 @@
+
 module.exports = (sequelize, DataTypes) => {
   const Book = sequelize.define('Book', {
     name: {
@@ -8,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       type: DataTypes.STRING,
     },
+    userId: DataTypes.INTEGER,
     score: {
       allowNull: false,
       type: DataTypes.INTEGER,
@@ -48,10 +50,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Book.associate = (models) => {
-    Book.belongsTo(models.User, {
-      foreignKey: 'userId',
-      onDelete: 'CASCADE'
-    });
+    Book.belongsTo(models.User, {foreignKey: 'userId', as: 'user'});
   };
   
   return Book;

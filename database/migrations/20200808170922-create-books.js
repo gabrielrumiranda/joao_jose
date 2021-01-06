@@ -7,7 +7,7 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      'userId': {
+      userId: {
         type: DataTypes.INTEGER,
         references: {
           model: 'Users', // name of Target model
@@ -15,6 +15,7 @@ module.exports = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
+        allowNull: true
       },
       name: {
         allowNull: false,
@@ -43,7 +44,9 @@ module.exports = {
       lastPageRead: {
         allowNull: true,
         type: DataTypes.INTEGER
-      }
+      },
+      updatedAt: DataTypes.DATE,
+      createdAt: DataTypes.DATE
     });
   },
 

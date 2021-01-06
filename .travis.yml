@@ -1,14 +1,18 @@
 
 language: node_js
-env:
-  - CODECOV_TOKEN=ada463b3-52b8-4d7a-a257-749e01836bec
 node_js:
   - 'stable'
+cache: yarn
+env:
+  global: 
+    - NODE_ENV=test;
+    - CODECOV_TOKEN=ada463b3-52b8-4d7a-a257-749e01836bec
 before_script:
+  - yarn install
   - psql -c 'create database joao_jose_api_test;' -U postgres
+  - yarn sequelize db:migrate                                
 script:
   - yarn lint
-  - yarn build
   - yarn report-coverage
   - yarn test
 after_success:
