@@ -1,34 +1,25 @@
 import { User } from '../models';
+const UserService = require('../services/user.js');
 const jsonwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 dotenv.config();
 
 exports.signup = async(req, res) => {
-  await User.findOne({ where: { email: req.body.email } })
-    .then(async function (user) {
-      if (!user) {
-        await User.create({
-          name: req.body.name,
-          email: req.body.email,
-          password: req.body.password
-        })
-          .then(user => {
-            res.status(200).send(user);
-          })
-          .catch(err => {
-            res.status(400).send(err.message);
-          });
-      } else {
-        res.status(409).send('User already exists');
-      }
-    })
-    .catch(err => {
-      console.log('Error is ', err.message);
-    });
+  try {
+    const result = await UserService.create(req.body);
+    if (result.success) {
+      res.status(201).json(result);
+    }
+    else {
+      res.status(400).json(result);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
 };
 
 exports.signin = async (req, res) => {
-  const {email, password } = req.body;
+  const {email, password } = req.body; 
 
   await User.findOne({ where: { email: email } })
     .then(function (user) {
